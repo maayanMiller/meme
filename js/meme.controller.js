@@ -85,6 +85,7 @@ function editTxt(elInput) {
 			break
 		default: // text, number
 			value = elInput.value
+
 			break
 	}
 	const meme = getSetMeme()
@@ -108,14 +109,13 @@ function drawTxt(txt) {
 	gCtx.fillText(txt.line, txt.x, txt.y)
 }
 
-function addTxt() {
-	if (gLines === 0) return console.log('no')
-	drawCanvas()
+function addTxt(txt) {
+	// drawCanvas()
 	const meme = getSetMeme()
 
 	let elIdx = document.querySelectorAll('[data-id]')
-
-	meme.txts.push(createTxt('New Line', 125, 50 + 202))
+	if (!txt) txt = 'new line'
+	meme.txts.push(createTxt(txt, 125, 50 + 202))
 	meme.tdx = 2
 	elIdx.forEach((el) => {
 		el.dataset.id = meme.tdx
@@ -147,6 +147,7 @@ function chooseTxt(val) {
 		meme.tdx++
 	} else meme.tdx++
 	let txt = meme.txts[meme.tdx]
+	upDatePlaceHolder()
 
 	addBorder(meme)
 }
@@ -215,9 +216,9 @@ function onMove(ev) {
 }
 function onDown(ev) {
 	const pos = getEvPos(ev)
-	var x = isTxtClicked2(pos)
+	var x = locateClicklTxt(pos)
 	if (!isTxtClicked(pos)) return
-
+	upDatePlaceHolder()
 	setTxtIsDrag(true)
 	gStartPos = pos
 	gCanvas.style.cursor = 'grabbing'
@@ -246,9 +247,14 @@ function onUp() {
 	document.body.style.cursor = 'default'
 	gCanvas.style.cursor = 'grab'
 }
-
+function back() {
+	const imgs = createImgs()
+	renderImgs(imgs)
+	toggleView()
+}
 function save(el) {
 	addMemeToSavedList()
+	back()
 }
 function load() {
 	let loadMemes = getSavedMemes()
@@ -258,8 +264,9 @@ function renderLoadImgs(loadMeme) {
 	var strHtml = loadMeme
 		// changeId(meme)
 		.map(function (meme, idx) {
+			console.log('meme:', meme)
 			return `
-        <img id='${meme.selectedImgId}' data-id='${meme.loadId}' src='${meme.imgUrl}' onclick="initLoadMeme(this)" data-random="false" alt='meme picture'/>
+        <img id='${meme.selectedImgId}' data-mdx="${idx}" data-id='${meme.loadId}' src='${meme.imgUrl}' onclick="initLoadMeme(this)" data-random="false" alt='meme picture'/>
         `
 		})
 		.join(' ')
@@ -279,15 +286,7 @@ function initLoadMeme(btn) {
 			initCanvas(btn)
 		}
 	})
-}
-
-function initMemeEditor1() {
-	//* לעדכן data set וזזה אולי יפתור רת עניין הפלייס הולדר
-
-	meme.txts[meme.tdx].isChosen = true
-	plh.placeholder = meme.txts[meme.tdx][property]
-	toggleView()
-	initCanvas(th)
+	removeMemeFormSave(btn)
 }
 
 function onSetFilter(value) {
@@ -363,4 +362,12 @@ function editLocation(elInput) {
 			break
 	}
 	drawCanvas()
+}
+function upDatePlaceHolder(el, val) {
+	const meme = getSetMeme()
+	let title = document.querySelector('.plh')
+	title.value = meme.txts[meme.tdx].line
+}
+function addSticker(sticker) {
+	addTxt(sticker.innerText)
 }

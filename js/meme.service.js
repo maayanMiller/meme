@@ -32,16 +32,16 @@ function createImgs() {
 		createImage('/img/1.jpg', ['fun', 'bad']),
 		createImage('/img/2.jpg', ['fun', 'happy', 'animal']),
 		createImage('/img/3.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/4.jpg', ['fun', 'animal']),
-		createImage('/img/5.jpg', ['fun']),
-		createImage('/img/6.jpg', ['fun']),
-		createImage('/img/7.jpg', ['fun']),
-		createImage('/img/8.jpg', ['fun']),
-		createImage('/img/9.jpg', ['fun']),
-		createImage('/img/10.jpg', ['fun']),
-		createImage('/img/11.jpg', ['fun']),
-		createImage('/img/12.jpg', ['fun']),
-		createImage('/img/13.jpg', ['fun'])
+		createImage('/img/4.jpg', ['fun', 'happy', 'animal']),
+		createImage('/img/5.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('/img/6.jpg', ['fun', 'happy', 'animal']),
+		createImage('/img/7.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('/img/8.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('/img/9.jpg', ['fun', 'happy', 'animal'], 'sad'),
+		createImage('/img/10.jpg', ['fun', 'happy', 'animal']),
+		createImage('/img/11.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('/img/12.jpg', ['fun', 'happy', 'animal']),
+		createImage('/img/13.jpg', ['fun', 'sad', 'awkward', 'bad'])
 	)
 
 	return gImgs
@@ -135,7 +135,7 @@ function moveTxt(dx, dy) {
 	gMeme.txts[gMeme.tdx].x += dx
 	gMeme.txts[gMeme.tdx].y += dy
 }
-function isTxtClicked2(clickedPos) {
+function locateClicklTxt(clickedPos) {
 	gMeme.txts.forEach((txt, idx) => {
 		const pos = {
 			x: txt.x,
@@ -207,6 +207,7 @@ function getFilterSize() {
 	}
 	return gSizes
 }
-function changeId(loadMeme) {
-	console.log('loadMeme:', loadMeme)
+function removeMemeFormSave(btn) {
+	gSavedMems.splice(btn.dataset.mdx, 1)
+	console.log('gSavedMems:', gSavedMems)
 }

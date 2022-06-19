@@ -27,6 +27,7 @@ a {
 	padding: 1rem;
 	transition: all 0.3s;
 	cursor: pointer;
+	text-decoration: none;
 }
 input {
 	border-radius: 25px;
@@ -41,4 +42,10 @@ input .plh {
 }
 select {
 	font-size: 1.5rem;
+	padding: 0.5rem;
+	cursor: pointer;
+}
+
+input[type='color'] {
+	display: none;
 }
