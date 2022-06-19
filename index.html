@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Meme Generator</title>
+		<script defer src="./fonts/fontawesome-all.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body onload="init()">
+		<header class="main-header">
+			<div class="main-header main-nav">
+				<img src="/LOGO/LOGO.png" alt="" />
+				<button data-random="true" onclick="initMemeEditor(null,this)">Random</button>
+				<button onclick="load(null,this)">Load</button>
+				<div class="serch">
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="fun"
+						class="keyWord"
+					>
+						fun
+					</div>
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="animal"
+						class="keyWord"
+					>
+						animal
+					</div>
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="bad"
+						class="keyWord"
+					>
+						bad
+					</div>
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="awkward"
+						class="keyWord"
+					>
+						awkward
+					</div>
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="happy"
+						class="keyWord"
+					>
+						happy
+					</div>
+					<div
+						data-size="16"
+						onclick="onSetFilter(this)"
+						data-property="s"
+						class="keyWord"
+					>
+						sad
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div>
+				<section class="gallery grid-container">
+					<!-- js render -->
+				</section>
+
+				<section class="meme-container hidden">
+					<div class="meme-control">
+						<canvas class="memeCanvas"> <canvas class="recCanvas"></canvas> </canvas>
+
+						<div class="txts-list flex-container">
+							<div class="flex-items">
+								<button class="plus" onclick="addTxt()">+</button>
+								<button class="plus" onclick="deleteTxt()">-</button>
+								<input
+									class="plh"
+									type="text"
+									data-property="line"
+									data-id="0"
+									placeholder=""
+									oninput="editTxt(this)"
+								/>
+							</div>
+							<div class="flex-items">
+								<button onclick="chooseTxt()">toggle</button>
+								<div class="">
+									<i class="fas fa-text-height"></i>
+									<input
+										type="range"
+										data-id="0"
+										min="25"
+										max="80"
+										step="2"
+										data-property="size"
+										oninput="editTxt(this )"
+									/>
+								</div>
+							</div>
+							<div class="flex-items">
+								<div class="">
+									<label for="color">Color</label>
+									<input
+										id="color"
+										type="color"
+										data-id="0"
+										data-property="color"
+										oninput="editTxt(this)"
+									/>
+								</div>
+								<div class="">
+									Family:
+									<select
+										data-property="fontFamily"
+										data-id="0"
+										oninput="editTxt(this)"
+									>
+										<option value="Impact">Impact</option>
+										<option value="Tahoma">Tahoma</option>
+										<option value="Geneva">Geneva</option>
+										<option value="Verdana">Verdana</option>
+									</select>
+								</div>
+							</div>
+							<div class="flex-items">
+								<div class="">
+									<button data-move="up" onclick="onMove1(this)">↑</button>
+									<button data-move="down" onclick="onMove1(this)">↓</button>
+									<button data-move="left" onclick="onMove1(this)">←</button>
+									<button data-move="right" onclick="onMove1(this)">→</button>
+								</div>
+								<!-- <i class="fas fa-arrows-alt-h"></i>
+								<input
+									value="135"
+									type="number"
+									min="0"
+									step="5"
+									data-id="0"
+									data-property="x"
+									oninput="editTxt(this )"
+								/>
+								<i class="fas fa-arrows-alt-v"></i>
+								<input
+									type="number"
+									value="8"
+									min="0"
+									step="5"
+									data-property="y"
+									data-id="0"
+									oninput="editTxt(this )"
+								/> -->
+
+								<select
+									data-property="align"
+									data-id="0"
+									oninput="editLocation(this)"
+								>
+									<option value="left">left</option>
+									<option value="center">center</option>
+									<option value="right">right</option>
+								</select>
+							</div>
+							<div class="flex-items">
+								<input
+									id="outline"
+									type="checkbox"
+									data-property="isOutline"
+									checked
+									data-id="0"
+									onclick="editTxt(this)"
+								/>
+								<label for="outline">Outline</label>
+								Width:
+								<input
+									type="number"
+									min="0"
+									step="1"
+									data-id="0"
+									data-property="lineWidth"
+									oninput="editTxt(this)"
+								/>
+								<input
+									data-id="0"
+									type="color"
+									data-property="strokeStyle"
+									oninput="editTxt(this)"
+								/>
+							</div>
+
+							<div class="flex-items">
+								<input
+									id="shadow"
+									type="checkbox"
+									data-id="0"
+									data-property="isShadow"
+									onclick="editTxt(this)"
+								/>
+								<label for="shadow">Shadow</label>
+								<input
+									type="color"
+									data-property="shadowColor"
+									data-id="0"
+									oninput="editTxt(this)"
+								/>
+								<i class="fas fa-arrows-alt-h"></i>
+								<input
+									type="number"
+									step="1"
+									data-property="shadowOffsetX"
+									data-id="0"
+									oninput="editTxt(this)"
+								/>
+								<i class="fas fa-arrows-alt-v"></i
+								><input
+									type="number"
+									step="1"
+									data-property="shadowOffsetY"
+									data-id="0"
+									oninput="editTxt(this )"
+								/>
+
+								<label for="blur"> Blur:</label>
+
+								<input
+									id="blur"
+									type="number"
+									data-property="shadowBlur"
+									data-id="0"
+									oninput="editTxt(this)"
+								/>
+							</div>
+							<div class="flex-items">
+								<a
+									href=""
+									class="down"
+									onclick="downloadImg(this)"
+									download="my-img.jpg"
+									>Download</a
+								>
+								<button class="down" onclick="save()">Save</button>
+								<button class="exit btn-round" onclick="toggleView()">
+									<i class="fas fa-times"></i> Back
+								</button>
+							</div>
+						</div>
+						<div class="txt-editor"></div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container"></div>
+		</footer>
+		<script src="js/utils.js"></script>
+		<script src="js/srotge.service.js"></script>
+		<script src="js/meme.service.js"></script>
+		<script src="js/meme.controller.js"></script>
+	</body>
+</html>

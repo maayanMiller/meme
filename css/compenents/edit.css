@@ -1,0 +1,52 @@
+.meme-container {
+	display: flex;
+	font-size: 2rem;
+	flex-direction: column;
+	background-color: rgba(92, 128, 128, 0.351);
+	border-radius: 25px;
+	margin-block-start: 2em;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	padding: 1em;
+}
+
+.meme-control {
+	display: flex;
+}
+
+.memeCanvas {
+	border: 1px solid white;
+	border-radius: 25px;
+	margin: 1em;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+	align-self: flex-start;
+}
+
+input[type='text'] {
+	padding: 5px;
+	border: 1px solid rgb(147, 147, 160);
+	-webkit-border-radius: 2px;
+	border-radius: 25px;
+	font-size: 0.8em;
+}
+
+input[type='number'] {
+	height: 2rem;
+	width: 15%;
+	font-size: 0.7em;
+}
+
+.exit {
+	border-radius: 25px;
+}
+.down {
+	background-color: #fe6e20;
+	border-radius: 25px;
+}
+.hidden {
+	display: none;
+}
+.txts-list {
+	display: flex;
+	justify-content: space-around;
+}

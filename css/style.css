@@ -1,0 +1,12 @@
+@import 'setup/vars.css';
+@import 'setup/typography.css';
+@import 'basic/base.css';
+@import 'basic/layout.css';
+@import 'basic/helpers.css';
+/* @import 'basic/buttons.css'; */
+@import 'compenents/header.css';
+@import 'compenents/gallary.css';
+@import 'compenents/edit.css';
+/* @import 'compenents/footer.css'; */
+/* @import 'compenents/main-content.css'; */
+/* @import 'mq/mq.css'; */
