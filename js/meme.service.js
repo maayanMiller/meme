@@ -29,19 +29,19 @@ const memesSentences = [
 function createImgs() {
 	gImgs = []
 	gImgs.push(
-		createImage('/img/1.jpg', ['fun', 'bad']),
-		createImage('/img/2.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/3.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/4.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/5.jpg', ['fun', 'sad', 'awkward', 'bad']),
-		createImage('/img/6.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/7.jpg', ['fun', 'sad', 'awkward', 'bad']),
-		createImage('/img/8.jpg', ['fun', 'sad', 'awkward', 'bad']),
-		createImage('/img/9.jpg', ['fun', 'happy', 'animal'], 'sad'),
-		createImage('/img/10.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/11.jpg', ['fun', 'sad', 'awkward', 'bad']),
-		createImage('/img/12.jpg', ['fun', 'happy', 'animal']),
-		createImage('/img/13.jpg', ['fun', 'sad', 'awkward', 'bad'])
+		createImage('img/1.jpg', ['fun', 'bad']),
+		createImage('img/2.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/3.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/4.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/5.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('img/6.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/7.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('img/8.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('img/9.jpg', ['fun', 'happy', 'animal'], 'sad'),
+		createImage('img/10.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/11.jpg', ['fun', 'sad', 'awkward', 'bad']),
+		createImage('img/12.jpg', ['fun', 'happy', 'animal']),
+		createImage('img/13.jpg', ['fun', 'sad', 'awkward', 'bad'])
 	)
 
 	return gImgs
